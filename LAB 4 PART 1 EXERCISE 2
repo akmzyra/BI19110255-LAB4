@@ -1,0 +1,114 @@
+//============================================================================
+// Name        : LAB4.cpp
+// Author      :
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include<queue>
+#include <stdio.h>
+
+#define MAX 999
+
+using namespace std;
+
+class Queue{
+public:
+	int queueArr, front, rear;
+
+};
+
+void insert();
+void del();
+void display();
+int queueArr[MAX];
+int rear = -1;
+int front = -1;
+
+void insert(){
+	int add_item;
+	if (rear == MAX -1)
+		cout << "overflow!";
+	else{
+		if (front == -1) // if queue is empty, insert the integer to the queue array
+			front = 0;
+		cout << "insert element in queue: ";
+		cin >> add_item;
+		rear = rear + 1;
+		queueArr[rear] = add_item;
+	}
+}
+
+void del(){
+
+	// Delete front element from queue
+	// if front is not equal to rear (empty)
+
+	if (front == -1 || front > rear){
+		cout << "queue underflow!";
+		return;
+	}
+
+	else{
+		cout << "element deleted from queue is: \n" << queueArr[front];
+		front = front + 1;
+	}
+
+}
+
+void display(){
+
+	// print out the queue array if rear is not equal to front.
+	int i;
+	if (front == -1)
+		cout << "queue is empty\n";
+	else{
+		 cout << "\nQueue is : \n";
+		        for (i = front; i <= rear; i++)
+		            cout << " " << queueArr[i];
+		        cout << "\n";
+
+
+
+	}
+
+}
+
+
+int main(){
+
+	int choice;
+	while(1){
+		cout << "\n1. Insert element\n";
+		cout << "2. Delete element\n";
+		cout << "3. Display element\n";
+		cout << "4. Quit\n";
+		cout << "\nEnter your choice: ";
+		cin >> choice;
+
+		switch(choice){
+		case 1:
+			insert();
+			break;
+		case 2:
+			del();
+			break;
+		case 3:
+			display();
+			break;
+		case 4:
+			exit(1);
+		default:
+			cout << "wrong!";
+
+		}
+
+
+
+	}
+
+}
+
+
